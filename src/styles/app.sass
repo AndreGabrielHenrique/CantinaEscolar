@@ -1,0 +1,177 @@
+// Caminho relativo: src/styles/app.sass
+// Este arquivo contém estilos específicos da aplicação, incluindo layout e componentes.
+
+// Estilização do layout principal com aparência inspirada em cantina escolar.
+.app-container
+  // Largura máxima para centralizar o conteúdo.
+  max-width: 1200px
+  // Centraliza o container horizontalmente.
+  margin: 0 auto
+  // Padding interno responsivo.
+  padding: 2rem 1.5rem 3rem
+  // Layout em grid para organizar seções.
+  display: grid
+  // Espaçamento entre seções.
+  gap: 1.75rem
+
+// Estilos para seções de cartão, usadas em várias partes.
+.section-card
+  // Fundo semi-transparente para sobrepor o gradiente.
+  background: rgba(255, 255, 255, 0.95)
+  // Bordas arredondadas para aparência moderna.
+  border-radius: 24px
+  // Padding interno para espaçamento.
+  padding: 2rem
+  // Sombra para dar profundidade.
+  box-shadow: 0 20px 50px rgba(45, 41, 41, 0.12)
+  // Borda sutil para definição.
+  border: 1px solid rgba(45, 41, 41, 0.08)
+
+// Estilos específicos para a seção hero (cabeçalho principal).
+.hero
+  // Fundo gradiente escuro para destacar o texto.
+  background: linear-gradient(135deg, #4a3429 0%, #7a5a3d 100%)
+  // Cor do texto branco para contraste.
+  color: white
+  // Posicionamento relativo para elementos filhos.
+  position: relative
+  // Overflow hidden para possíveis efeitos.
+  overflow: hidden
+  .hero-copy
+    // Posicionamento relativo para z-index.
+    position: relative
+    z-index: 1
+  .eyebrow
+    // Display inline-block para controle de largura.
+    display: inline-block
+    // Margem inferior para espaçamento.
+    margin-bottom: 1rem
+    // Tamanho da fonte menor.
+    font-size: 0.9rem
+    // Peso da fonte em negrito.
+    font-weight: 700
+    // Espaçamento entre letras maiúsculo.
+    letter-spacing: 0.15em
+    // Transformação para maiúsculo.
+    text-transform: uppercase
+    // Cor dourada para destaque.
+    color: #f8d7a0
+  .hero-title
+    // Remove margem padrão.
+    margin: 0
+    // Tamanho da fonte responsivo com clamp.
+    font-size: clamp(2.5rem, 4vw, 3.75rem)
+    // Altura da linha para legibilidade.
+    line-height: 1.05
+  .hero-subtitle
+    // Margem superior para espaçamento.
+    margin-top: 1rem
+    // Tamanho da fonte.
+    font-size: 1.05rem
+    // Largura máxima para evitar texto muito largo.
+    max-width: 52rem
+    // Altura da linha.
+    line-height: 1.75
+
+// Estilos para a lista de problemas.
+.problem-list
+  // Estilo de lista com disco dentro.
+  list-style: disc inside
+  // Remove padding esquerdo padrão.
+  padding-left: 0
+  // Margem superior para espaçamento.
+  margin: 1.25rem 0 0
+  li
+    // Margem inferior para itens.
+    margin-bottom: 0.9rem
+    // Altura da linha.
+    line-height: 1.6
+
+// Estilos para a tabela de faturamento.
+.revenue-table
+  // Overflow horizontal para tabelas grandes.
+  overflow-x: auto
+  table
+    // Largura total da tabela.
+    width: 100%
+    // Remove espaçamento entre células.
+    border-collapse: collapse
+  th, td
+    // Padding interno para células.
+    padding: 1rem 1.1rem
+    // Alinhamento à esquerda.
+    text-align: left
+    // Borda inferior sutil.
+    border-bottom: 1px solid #e7dfd4
+  th
+    // Fundo claro para cabeçalhos.
+    background: #f7f1e7
+    // Peso da fonte em negrito.
+    font-weight: 700
+  tbody tr
+    // Transição para hover.
+    transition: background 0.25s ease
+    // Fundo ao passar o mouse.
+    &:hover
+      background: rgba(255, 203, 150, 0.16)
+  .summary-row
+    td
+      // Peso da fonte em negrito para resumo.
+      font-weight: 700
+      // Fundo claro para destaque.
+      background: #fff7ef
+
+// Estilos para nota informativa.
+.info-note
+  // Margem superior.
+  margin-top: 1.5rem
+  // Tamanho da fonte.
+  font-size: 0.98rem
+  // Cor do texto mais escura.
+  color: #5a4d40
+  // Altura da linha.
+  line-height: 1.7
+
+// Estilos para o grid de análise.
+.analysis-grid
+  // Layout em grid responsivo.
+  display: grid
+  // Espaçamento entre itens.
+  gap: 1rem
+  // Colunas automáticas com largura mínima.
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+  article
+    // Fundo claro para artigos.
+    background: #fff7ee
+    // Padding interno.
+    padding: 1.25rem
+    // Bordas arredondadas.
+    border-radius: 18px
+    // Borda sutil.
+    border: 1px solid rgba(75, 57, 45, 0.12)
+    h3
+      // Remove margem superior.
+      margin-top: 0
+      // Tamanho da fonte.
+      font-size: 1rem
+      // Cor do texto.
+      color: #6b4e34
+    p
+      // Remove margem.
+      margin: 0.8rem 0 0
+      // Tamanho da fonte.
+      font-size: 1rem
+      // Altura da linha.
+      line-height: 1.7
+
+// Media query para telas menores que 700px.
+@media (max-width: 700px)
+  .app-container
+    // Padding reduzido para mobile.
+    padding: 1.25rem
+  .section-card
+    // Padding reduzido.
+    padding: 1.5rem
+  .hero-title
+    // Tamanho da fonte reduzido.
+    font-size: 2.25rem

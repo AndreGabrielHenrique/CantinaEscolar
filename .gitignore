@@ -1,0 +1,17 @@
+# Caminho relativo: .gitignore
+# Este arquivo especifica arquivos e pastas que o Git deve ignorar no repositório.
+
+# Pasta node_modules: contém dependências instaladas pelo npm, não deve ser versionada.
+node_modules/
+
+# Pasta dist: contém os arquivos de build de produção, gerados automaticamente.
+dist/
+
+# Pasta .vscode: configurações específicas do VS Code do usuário.
+.vscode/
+
+# Arquivo .DS_Store: arquivo de metadados criado pelo macOS, não relevante para o projeto.
+.DS_Store
+
+# Pasta .venv: ambiente virtual Python, não deve ser versionado.
+.venv/
