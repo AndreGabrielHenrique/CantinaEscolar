@@ -68,5 +68,4 @@ Com base nos dados de exemplo utilizados no site:
 
 ## Licença
 
-Este é um projeto educacional e não possui licença específica.</content>
-<parameter name="filePath">c:\Users\andre.romano\Meu Drive\Atividades, apresentações e revisões\Já prontas\Cantina Escolar\README.md
+<content>Este é um projeto educacional e não possui licença específica.</content>
