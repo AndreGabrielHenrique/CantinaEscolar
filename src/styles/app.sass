@@ -13,6 +13,9 @@
   display: grid
   // Espaçamento entre seções.
   gap: 1.75rem
+  // Garante que nunca ultrapasse viewport.
+  width: 100%
+  box-sizing: border-box
 
 // Estilos para seções de cartão, usadas em várias partes.
 .section-card
@@ -26,6 +29,10 @@
   box-shadow: 0 20px 50px rgba(45, 41, 41, 0.12)
   // Borda sutil para definição.
   border: 1px solid rgba(45, 41, 41, 0.08)
+  // Garante que respeite container pai.
+  width: 100%
+  box-sizing: border-box
+  overflow: hidden
 
 // Estilos específicos para a seção hero (cabeçalho principal).
 .hero
@@ -89,13 +96,22 @@
 
 // Estilos para a tabela de faturamento.
 .revenue-table
-  // Overflow horizontal para tabelas grandes.
-  overflow-x: auto
+  // Garante que não ultrapasse container.
+  width: 100%
+  box-sizing: border-box
+  // Padding para alinhamento com o resto do conteúdo.
+  padding: 0
+  margin: 0
+  // Sem overflow horizontal - tabela será responsiva sem scroll.
+  overflow: hidden
   table
     // Largura total da tabela.
     width: 100%
     // Remove espaçamento entre células.
     border-collapse: collapse
+    // Garante padding mínimo.
+    margin: 0
+    padding: 0
   th, td
     // Padding interno para células.
     padding: 1rem 1.1rem
@@ -103,6 +119,9 @@
     text-align: left
     // Borda inferior sutil.
     border-bottom: 1px solid #e7dfd4
+    // Permite quebra de texto nas células.
+    word-break: break-word
+    overflow-wrap: break-word
   th
     // Fundo claro para cabeçalhos.
     background: #f7f1e7
@@ -164,14 +183,300 @@
       // Altura da linha.
       line-height: 1.7
 
-// Media query para telas menores que 700px.
-@media (max-width: 700px)
+// Media query para tablets em paisagem: 768px até 1024px.
+// Ajusta espaçamento e tamanho de fonte para telas médias.
+@media (min-width: 768px) and (max-width: 1024px)
   .app-container
-    // Padding reduzido para mobile.
-    padding: 1.25rem
+    // Padding reduzido para tablets.
+    padding: 1.75rem 1.25rem 2.5rem
+    // Gap reduzido entre seções.
+    gap: 1.5rem
+  .section-card
+    // Padding reduzido.
+    padding: 1.75rem
+  .hero-title
+    // Tamanho da fonte ajustado.
+    font-size: 2.75rem
+  .hero-subtitle
+    // Fonte reduzida.
+    font-size: 1rem
+  .analysis-grid
+    // Coluna mínima aumentada.
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+  .revenue-table
+    table
+      th, td
+        // Padding reduzido.
+        padding: 0.8rem 0.9rem
+        // Fonte um pouco menor.
+        font-size: 0.95rem
+
+// Media query para tablets em retrato: 481px até 767px.
+// Layout mais compacto para telas menores.
+@media (min-width: 481px) and (max-width: 767px)
+  .app-container
+    // Padding ajustado.
+    padding: 1.5rem 1rem 2rem
+    // Gap reduzido.
+    gap: 1.25rem
   .section-card
     // Padding reduzido.
     padding: 1.5rem
+    // Bordas menos arredondadas.
+    border-radius: 16px
+  .hero
+    border-radius: 16px
   .hero-title
-    // Tamanho da fonte reduzido.
+    // Tamanho reduzido.
     font-size: 2.25rem
+  .hero-subtitle
+    // Fonte reduzida.
+    font-size: 0.95rem
+  .eyebrow
+    font-size: 0.85rem
+    margin-bottom: 0.75rem
+  .problem-list
+    li
+      // Fonte reduzida.
+      font-size: 0.95rem
+  .analysis-grid
+    // Grid em 2 colunas.
+    grid-template-columns: repeat(2, 1fr)
+    gap: 0.9rem
+    article
+      padding: 1rem
+      h3
+        font-size: 0.9rem
+      p
+        font-size: 0.9rem
+  .revenue-table
+    table
+      th, td
+        padding: 0.6rem 0.7rem
+        font-size: 0.85rem
+        word-break: break-word
+        overflow-wrap: break-word
+
+// Media query para smartphones grandes: 376px até 480px.
+// Layout bem compacto para melhorar legibilidade.
+@media (min-width: 376px) and (max-width: 480px)
+  .app-container
+    // Padding bem reduzido.
+    padding: 1rem 0.75rem 1.5rem
+    // Gap pequeno.
+    gap: 1rem
+  .section-card
+    // Padding mínimo.
+    padding: 1rem 1.25rem
+    // Bordas muito arredondadas.
+    border-radius: 12px
+  .hero
+    border-radius: 12px
+  .hero-title
+    // Tamanho bem reduzido.
+    font-size: 1.75rem
+    line-height: 1.1
+  .hero-subtitle
+    margin-top: 0.75rem
+    font-size: 0.9rem
+    line-height: 1.5
+  .eyebrow
+    font-size: 0.8rem
+    margin-bottom: 0.75rem
+  header
+    h2
+      font-size: 1.15rem
+  .problem-list
+    margin: 1rem 0 0
+    li
+      margin-bottom: 0.7rem
+      font-size: 0.9rem
+  .analysis-grid
+    // Grid em coluna única.
+    grid-template-columns: 1fr
+    gap: 0.75rem
+    article
+      padding: 0.9rem
+      border-radius: 12px
+      h3
+        font-size: 0.85rem
+      p
+        font-size: 0.85rem
+  .revenue-table
+    table
+      th, td
+        padding: 0.5rem 0.5rem
+        font-size: 0.75rem
+        word-break: break-word
+        overflow-wrap: break-word
+  .info-note
+    margin-top: 1rem
+    font-size: 0.85rem
+
+// Media query para smartphones muito pequenos: até 375px.
+// Layout mínimo para máxima compactação sem scroll horizontal.
+@media (max-width: 375px)
+  .app-container
+    // Padding mínimo para evitar scroll horizontal.
+    padding: 0.5rem 0.5rem 0.75rem
+    // Gap bem pequeno.
+    gap: 0.5rem
+    // Garante que não ultrapasse viewport.
+    max-width: 100%
+    width: 100%
+    overflow: hidden
+  .section-card
+    // Padding reduzido ao máximo.
+    padding: 0.75rem 1rem
+    border-radius: 10px
+    box-shadow: 0 10px 30px rgba(45, 41, 41, 0.08)
+    // Garante que respeite container.
+    max-width: 100%
+    overflow: hidden
+  .hero
+    border-radius: 10px
+  .hero-title
+    // Tamanho bem reduzido.
+    font-size: 1.5rem
+    line-height: 1.1
+    margin: 0
+  .hero-subtitle
+    margin-top: 0.5rem
+    font-size: 0.85rem
+    line-height: 1.4
+  .eyebrow
+    font-size: 0.7rem
+    margin-bottom: 0.5rem
+  header
+    h2
+      font-size: 1.1rem
+  .problem-list
+    margin: 0.75rem 0 0
+    li
+      margin-bottom: 0.6rem
+      font-size: 0.85rem
+  .analysis-grid
+    // Coluna única.
+    grid-template-columns: 1fr
+    gap: 0.5rem
+    article
+      padding: 0.75rem 0.9rem
+      border-radius: 10px
+      h3
+        font-size: 0.8rem
+        margin: 0 0 0.4rem
+      p
+        margin: 0.5rem 0 0
+        font-size: 0.8rem
+  .revenue-table
+    // Sem margens negativas - tabela responsiva.
+    max-width: 100%
+    width: 100%
+    padding: 0
+    margin: 0
+    overflow: hidden
+    table
+      // Garante que a tabela nunca ultrapasse a largura.
+      width: 100%
+      font-size: 0.65rem
+      margin: 0
+      padding: 0
+      th, td
+        // Padding mínimo em tabelas.
+        padding: 0.3rem 0.25rem
+        font-size: 0.65rem
+        // Permite quebra de texto sem scroll.
+        word-break: break-word
+        overflow-wrap: break-word
+      thead
+        th
+          word-break: break-word
+          overflow-wrap: break-word
+      tbody
+        tr
+          &:hover
+            background: rgba(255, 203, 150, 0.12)
+  .info-note
+    margin-top: 0.75rem
+    font-size: 0.8rem
+    line-height: 1.5
+
+// Media query adicional para telas entre 376px e 639px.
+// Transição suave entre smartphones pequenos e médios.
+@media (min-width: 376px) and (max-width: 639px)
+  .app-container
+    // Padding bem reduzido.
+    padding: 0.75rem 0.75rem 1rem
+    // Gap pequeno.
+    gap: 0.75rem
+    // Garante que não ultrapasse viewport.
+    max-width: 100%
+    width: 100%
+    overflow: hidden
+  .section-card
+    // Padding otimizado.
+    padding: 1rem 1.25rem
+    // Bordas bem arredondadas.
+    border-radius: 12px
+    // Garante que respeite container.
+    max-width: 100%
+    overflow: hidden
+  .hero
+    border-radius: 12px
+  .hero-title
+    // Tamanho reduzido.
+    font-size: 1.75rem
+    line-height: 1.1
+  .hero-subtitle
+    margin-top: 0.75rem
+    font-size: 0.9rem
+    line-height: 1.5
+  .eyebrow
+    font-size: 0.8rem
+    margin-bottom: 0.75rem
+  header
+    h2
+      font-size: 1.2rem
+  .problem-list
+    margin: 1rem 0 0
+    li
+      margin-bottom: 0.7rem
+      font-size: 0.9rem
+  .analysis-grid
+    // Grid em coluna única.
+    grid-template-columns: 1fr
+    gap: 0.75rem
+    article
+      padding: 0.9rem
+      border-radius: 12px
+      h3
+        font-size: 0.85rem
+      p
+        font-size: 0.85rem
+  .revenue-table
+    // Tabela responsiva sem scroll.
+    max-width: 100%
+    width: 100%
+    // Padding e margin zerados.
+    padding: 0
+    margin: 0
+    overflow: hidden
+    table
+      width: 100%
+      margin: 0
+      padding: 0
+      th, td
+        // Padding compacto.
+        padding: 0.5rem 0.4rem
+        font-size: 0.75rem
+        // Permite quebra de texto.
+        word-break: break-word
+        overflow-wrap: break-word
+      thead
+        th
+          font-size: 0.75rem
+          word-break: break-word
+          overflow-wrap: break-word
+  .info-note
+    margin-top: 1rem
+    font-size: 0.85rem

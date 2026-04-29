@@ -12,6 +12,8 @@ html
 // Estilos para o corpo da página.
 body
   margin: 0
+  // Remove scroll horizontal ao impedir overflow.
+  overflow-x: hidden
   min-height: 100vh
   // Fundo com gradiente vertical de tons terrosos para tema de cantina.
   background: linear-gradient(180deg, #f7f2e9 0%, #d2c2a6 100%)
@@ -30,3 +32,5 @@ button, input, textarea
 // Estilos para o elemento raiz do React.
 #root
   min-height: 100vh
+  // Evita que conteúdo ultrapasse viewport em mobile.
+  overflow-x: hidden
